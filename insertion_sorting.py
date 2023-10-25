@@ -1,21 +1,21 @@
-def insert(vector, i):
+def insert(vector, i, order):
     if len(vector) == 0:
         vector.append(i)
         return vector
 
     for idx, j in enumerate(vector):
-        if i < j:
+        if (order == 'asc' and i < j) or (order == 'desc' and i > j):
             vector.insert(idx, i)
             return vector
 
     vector.append(i)
     return vector
 
-def insertion_sort(vector):
+def insertion_sort(vector, order = 'asc'):
     sorted_vector = []
 
     for i in vector:
-        sorted_vector = insert(sorted_vector, i)
+        sorted_vector = insert(sorted_vector, i, order)
 
     return sorted_vector
 
@@ -27,4 +27,4 @@ test_list_3 = [5, 6, 7, 8, 9, 1, 2, 3, 4]
 print('Tests')
 print(insertion_sort(test_list_1))
 print(insertion_sort(test_list_2))
-print(insertion_sort(test_list_3))
+print(insertion_sort(test_list_3, 'desc'))
